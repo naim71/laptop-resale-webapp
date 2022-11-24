@@ -1,14 +1,11 @@
 import './App.css';
-import Navbar from './Pages/Navbar/Navbar';
-import Banner from './Pages/Banner/Banner';
-import Categories from './Pages/Categories/Categories';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './Routes/Router';
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto">
-      <Navbar></Navbar>
-      <Banner></Banner>
-      <Categories></Categories>
+    <div className="max-w-[1440px] mx-auto bg-primary mt-5">
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

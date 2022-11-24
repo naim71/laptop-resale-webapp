@@ -12,9 +12,9 @@ const Categories = () => {
 
 
     return (
-        <div className='mt-16'>
+        <div className='mt-16 mb-10'>
             <p className='text-2xl font-bold text-center'>Select Categories</p>
-            <div className='grid grid-cols-3 gap-3 justify-items-center my-10'>
+            <div className='grid grid-cols-3 justify-items-center my-20'>
                 {
                     categories.map(category => <CategoryCard
                     key={category._id}
