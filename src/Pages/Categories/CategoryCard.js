@@ -10,7 +10,7 @@ const CategoryCard = ({category}) => {
                 <div className="items-center text-center">
                     <h2 className="text-center text-[#45409C] font-bold text-2xl my-4">{name}</h2>
                     <div className="">
-                        <button className="btn btn-primary btn-sm">Buy Now</button>
+                        <button className="btn btn-primary btn-sm normal-case">Buy Now</button>
                     </div>
                 </div>
             </div>
