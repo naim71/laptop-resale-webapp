@@ -10,6 +10,7 @@ const Navbar = () => {
     const menuItems = <>
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        { user && <li><Link to='/blog'>Dashboard</Link></li> }
     </>
 
     return (

@@ -2,7 +2,6 @@ import React from 'react';
 
 const ProductCard = ({product, setBook}) => {
     const {image, name, price, location, originalPrice, time, seller, usage} = product;
-    console.log(product);
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">

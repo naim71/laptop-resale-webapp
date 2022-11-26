@@ -23,6 +23,7 @@ const Products = () => {
                 <Modal
                     book={book}
                     user={user}
+                    setBook={setBook}
                 ></Modal>
             }
         </div>

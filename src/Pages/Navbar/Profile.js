@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../components/Avatar/Avatar';
 
 const Profile = ({ user, logOut }) => {
-    console.log(user);
 
     return (
         <div>
