@@ -4,7 +4,7 @@ const ExtraSection = () => {
     const [section, setSection] = useState([]);
 
     useEffect(()=>{
-        fetch('section.json')
+        fetch('http://localhost:5000/sections')
         .then(res => res.json())
         .then(data => setSection(data))
     })

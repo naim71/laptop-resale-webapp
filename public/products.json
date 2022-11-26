@@ -1,0 +1,79 @@
+[
+    {
+        "categoryId": "01",
+        "image" : "https://i.ibb.co/qnvN98N/hp.png",
+        "name": "Hp Elitebook",
+        "category": "business",
+        "location" : "Dhaka,Bangladesh",
+        "usage" : "1",
+        "price" : "250",
+        "originalPrice" : "550",
+        "time" : "4:50:34 PM",
+        "seller" : "John doe"
+        
+    },
+    {
+        "categoryId": "01",
+        "image" : "https://i.ibb.co/4SrT5kB/dell.png",
+        "name": "Dell Voistro",
+        "category": "business",
+        "location" : "Dhaka,Bangladesh",
+        "usage" : "4",
+        "price" : "200",
+        "originalPrice" : "450",
+        "time" : "6:32:00 PM",
+        "seller" : "Kazrel rau"
+        
+    },
+    {
+        "categoryId": "02",
+        "image" : "https://i.ibb.co/6FMDFH2/omen.png",
+        "name": "HP Omen",
+        "category": "gaming",
+        "location" : "Dhaka,Bangladesh",
+        "usage" : "2",
+        "price" : "450",
+        "originalPrice" : "850",
+        "time" : "2:14:23 PM",
+        "seller" : "Vincent"
+        
+    },
+    {
+        "categoryId": "02",
+        "image" : "https://i.ibb.co/D8kVk6c/alien.png",
+        "name": "Alienware",
+        "category": "gaming",
+        "location" : "Dhaka,Bangladesh",
+        "usage" : "2",
+        "price" : "580",
+        "originalPrice" : "900",
+        "time" : "2:40:10 PM",
+        "seller" : "Liza Akter"
+        
+    },
+    {
+        "categoryId": "03",
+        "image" : "https://i.ibb.co/hftKf6B/mac.png",
+        "name": "Macbook Pro M1",
+        "category": "performance",
+        "location" : "Dhaka,Bangladesh",
+        "usage" : "1",
+        "price" : "1200",
+        "originalPrice" : "1500",
+        "time" : "3:40:08 AM",
+        "seller" : "Paul Jack"
+    },
+    {
+        "categoryId": "03",
+        "image" : "https://i.ibb.co/2ZfyDsp/surface.png",
+        "name": "Surfacebook",
+        "category": "performance",
+        "location" : "Dhaka,Bangladesh",
+        "usage" : "3",
+        "price" : "960",
+        "originalPrice" : "1300",
+        "time" : "7:00:20 AM",
+        "seller" : "Catherine"
+        
+    }
+]

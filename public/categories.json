@@ -1,47 +1,23 @@
 [
     {
-        "_id": "01",
+        "categoryId": "01",
         "image" : "https://i.ibb.co/Zc6GN9W/c1.png",
         "name": "Business Series",
-        "products": [
-            {
-                "brand": "Hp",
-                "price" : "200"
-            },
-            {
-                "brand": "Dell",
-                "price" : "350"
-            }
-        ]
+        "category": "business"
+        
     },
     {
-        "_id": "02",
+        "categoryId": "02",
         "image" : "https://i.ibb.co/v15MNjx/c2.png",
         "name": "Gaming Series",
-        "products": [
-            {
-                "brand": "Asus",
-                "price" : "300"
-            },
-            {
-                "brand": "Alienware",
-                "price" : "750"
-            }
-        ]
+        "category": "gaming"
+        
     },
     {
-        "_id": "03",
+        "categoryId": "03",
         "image" : "https://i.ibb.co/NpZDbZR/c4.png",
         "name": "Performance Series",
-        "products": [
-            {
-                "brand": "Apple Macbook",
-                "price" : "650"
-            },
-            {
-                "brand": "Microsoft Surfacebook",
-                "price" : "550"
-            }
-        ]
+        "category": "performance"
+        
     }
 ]
