@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product, setBook}) => {
     const {image, name, price, location, originalPrice, time, seller, usage} = product;
     console.log(product);
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
-                <figure className='w-52 h-52 mx-auto'><img src={image} alt="Shoes" /></figure>
+                <figure className='w-52 h-52 mx-auto'><img src={image} alt="laptop" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
                         {name}
@@ -20,7 +20,12 @@ const ProductCard = ({product}) => {
                         <div className="badge badge-outline">Seller: {seller}</div>
                         <div className="badge badge-outline">Posted at {time}</div>
                     </div>
-                    <button className='bg-primary mt-4 py-2 rounded-lg hover:bg-gradient-to-t from-[#FDB028] to-[#FDCC4A] font-medium'>Book Now</button>
+                    <label 
+                    onClick={()=> setBook(product)}
+                    htmlFor="product-modal" 
+                    className='bg-primary mt-4 py-2 rounded-lg hover:bg-gradient-to-t from-[#FDB028] to-[#FDCC4A] text-center font-medium cursor-pointer'
+                    >Book Now</label>
+
                 </div>
             </div>
         </div>
