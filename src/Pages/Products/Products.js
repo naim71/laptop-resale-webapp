@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../AuthContext/AuthProvider';
 import Modal from './Modal/Modal';
 import ProductCard from './ProductCard';
 
 const Products = () => {
+    const {user} = useContext(AuthContext);
     const products = useLoaderData();
     const [book, setBook] = useState(null);
     return (
@@ -17,9 +19,12 @@ const Products = () => {
             }
             {
                 book &&
+
                 <Modal
                     book={book}
-                ></Modal>}
+                    user={user}
+                ></Modal>
+            }
         </div>
     );
 };
