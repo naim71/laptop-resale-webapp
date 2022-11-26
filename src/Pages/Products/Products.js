@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 const Products = () => {
     const products = useLoaderData();
     return (
-        <div className='grid grid-cols-3'>
+        <div className='grid md:grid-cols-3 sm:grid-cols-1 gap-10 md:gap-5'>
             {
                 products.map(product => <ProductCard
                 key={product._id}
