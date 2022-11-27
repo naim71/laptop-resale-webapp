@@ -10,7 +10,7 @@ const Navbar = () => {
     const menuItems = <>
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
-        { user && <li><Link to='/blog'>Dashboard</Link></li> }
+        {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
     </>
 
     return (
@@ -33,14 +33,16 @@ const Navbar = () => {
             </div>
             {user?.uid ?
                 <>
-                <Profile user={user} logOut={logOut}></Profile>
+                    <Profile user={user} logOut={logOut}></Profile>
 
                 </>
                 :
                 <Link to='/login' className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-sm normal-case border border-neutral">Login</Link>
             }
-
-
+            <label htmlFor='dashboard-drawer' tabIndex={0} className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
+            
         </div>
     );
 };

@@ -1,10 +1,15 @@
 import React, { useContext, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../AuthContext/AuthProvider';
 
 const Signup = () => {
-    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [imgurl, setImgurl] = useState(null);
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [error, setError] = useState(null);
     const optionRef = useRef();
+
+    //console.log(url);
 
     const handleSignup = event => {
         event.preventDefault();
@@ -13,41 +18,77 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
-        const photoURL = 'www.facebook.com';
         const role = optionRef.current.value;
+        const image = form.picture.files[0];
 
-        if(password.length < 6){
+        //imgbb upload
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(imgData =>{
+            if(imgData.success){
+
+                const user = {
+                    name,
+                    email,
+                    role,
+                    image: imgData.data.url,
+                }
+                setImgurl(imgData.data.url);
+
+                fetch('http://localhost:5000/users',{
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(result =>{
+                    console.log(result)
+                })
+            }
+        })
+
+        if (password.length < 6) {
             setError('*Password must be at least 6 characters long')
             return;
         }
 
-        if(password !== confirm){
+        if (password !== confirm) {
             setError('*Password did not match')
             return;
         }
 
-        // createUser(email, password)
-        // .then(result => {
-        //     const user = result.user;
-        //     console.log(user);
-        //     form.reset();
-        //     handleUpdateUserProfile(name,photoURL);
-        // })
-        // .catch(error => {
-        //     console.error(error);
-        //     setError(error.message);
-        // })
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            handleUpdateUserProfile(name,imgurl);
+            toast('Account Created Successfully');
+        })
+        .catch(error => {
+            console.error(error);
+            setError(error.message);
+        })
 
     }
-    // const handleUpdateUserProfile = (name, photoURL) =>{
-    //     const profile = {
-    //         displayName: name,
-    //         photoURL: photoURL
-    //     }
-    //     updateUserProfile(profile)
-    //     .then(() => {})
-    //     .catch(error => console.error(error))
-    // }
+    const handleUpdateUserProfile = (name, imgurl) =>{
+        const profile = {
+            displayName: name,
+            photoURL: imgurl
+        }
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(error => console.error(error))
+    }
 
 
 
@@ -75,6 +116,12 @@ const Signup = () => {
                     </div>
                     <div className="space-y-1 text-sm">
                         <label className="label">
+                            <span className="label-text">Upload Your Picture:</span>
+                        </label>
+                        <input type="file" name='picture' className="file-input file-input-bordered file-input-primary w-full" required />
+                    </div>
+                    <div className="space-y-1 text-sm">
+                        <label className="label">
                             <span className="label-text">Select Your Account Type:</span>
                         </label>
                         <select ref={optionRef} className="select select-bordered" required>
@@ -82,6 +129,7 @@ const Signup = () => {
                             <option>Buyer</option>
                         </select>
                     </div>
+
 
                     <p className='text-red-400 text-sm text-center'>{ }</p>
                     <button type='submit' value='Submit' className="block w-full p-3 text-center rounded-sm text-black btn btn-primary normal-case">Sign Up</button>
