@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from '../layout/DashboardLayout';
 import Main from '../layout/Main';
@@ -10,6 +9,7 @@ import Products from '../Pages/Products/Products';
 import Login from '../Pages/Registration/Login';
 import Signup from '../Pages/Registration/Signup';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+
 
 export const router = createBrowserRouter([
 
@@ -48,12 +48,13 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        loader: ()=> fetch(`http://localhost:5000/users`),
         children: [
             {
                 path: "/dashboard",
                 element: <Dashboard></Dashboard> 
                 
-            }
+            },
         ]
     },
     {
