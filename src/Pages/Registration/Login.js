@@ -2,18 +2,26 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState('');
-    const err = 'Invalid username or password'
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+
+
     const { loginUser, providerLogin } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
 
     const from = location.state?.from?.pathname || '/';
+
+    if(token){
+        navigate(from, { replace: true });
+    }
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -40,7 +48,8 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate(from, { replace: true });
+                setLoginUserEmail(email);
+                
                 
             })
             .catch(error => {

@@ -1,15 +1,23 @@
 import React, { useContext, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const [imgurl, setImgurl] = useState(null);
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [error, setError] = useState(null);
+    const [createdUserEmail, setcreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
     const optionRef = useRef();
 
     //console.log(url);
+    if(token){
+        navigate('/')
+    }
 
     const handleSignup = event => {
         event.preventDefault();
@@ -41,7 +49,8 @@ const Signup = () => {
                     image: imgData.data.url,
                 }
                 setImgurl(imgData.data.url);
-
+                 
+                //save user info to database
                 fetch('http://localhost:5000/users',{
                     method: 'POST',
                     headers: {
@@ -51,10 +60,12 @@ const Signup = () => {
                 })
                 .then(res => res.json())
                 .then(result =>{
-                    console.log(result)
+                    setcreatedUserEmail(email);
                 })
             }
         })
+
+      
 
         if (password.length < 6) {
             setError('*Password must be at least 6 characters long')

@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 const Modal = ({ book, user, setBook }) => {
     const { displayName, email } = user;
-    const { name, price } = book;
+    const { name, price, image } = book;
 
     const handleBooking = event => {
         event.preventDefault();
@@ -22,6 +22,7 @@ const Modal = ({ book, user, setBook }) => {
             price: product_price,
             phone: number,
             meetingPlace: meeting_place,
+            image,
         }
         console.log(booking);
 
