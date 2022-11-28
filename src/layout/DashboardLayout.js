@@ -2,22 +2,30 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
+import useSeller from '../hooks/useSeller';
 import Navbar from '../Pages/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user?.email)
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
+    const [isBuyer] = useBuyer(user?.email);
+
 
     const menuItems = <>
-        <li><Link to='/dashboard'>My Orders</Link></li>
+        {isBuyer && <li><Link to='/dashboard/myorders'>My Orders</Link></li>}
         {isAdmin &&
             <>
                 <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
                 <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
             </>
         }
-        <li><Link to='/dashboard/addproduct'>Add a Product</Link></li>
-        <li><Link to='/dashboard/myproducts'>My Products</Link></li>
+        {isSeller &&
+            <>
+                <li><Link to='/dashboard/addproduct'>Add a Product</Link></li>
+                <li><Link to='/dashboard/myproducts'>My Products</Link></li>
+            </>}
     </>
 
     return (

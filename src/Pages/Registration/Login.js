@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext/AuthProvider';
 import useToken from '../../hooks/useToken';
@@ -19,9 +19,11 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    if(token){
-        navigate(from, { replace: true });
-    }
+    useEffect(()=>{
+        if(token){
+            navigate(from, { replace: true });
+        }
+    },[token,from])
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -50,7 +52,6 @@ const Login = () => {
                 setError('');
                 setLoginUserEmail(email);
                 
-                
             })
             .catch(error => {
                 console.error(error);
@@ -59,10 +60,7 @@ const Login = () => {
 
     }
 
-    // if(error.includes('Firebase: Error (auth/wrong-password).')){
-    //     return err;
-    // }
-    // else{setError('');}
+
 
 
     return (
