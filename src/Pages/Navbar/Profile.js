@@ -20,8 +20,6 @@ const Profile = ({ user, logOut }) => {
                     <li className='px-2 mt-2'>{user.displayName}</li>
                     <li className='text-sm px-2'>{user.email}</li>
                     <div className="divider my-1"></div>
-                    <li><Link>Item 1</Link></li>
-                    <li><Link>Item 2</Link></li>
                     <Link onClick={logOut} className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-sm normal-case border-neutral md:w-44 justify-items-center">Logout</Link>
                 </ul>
 
