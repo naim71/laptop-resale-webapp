@@ -1,17 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const NewSection = () => {
+const NewSection = ({ item }) => {
+    const { advertised, name, price, image, categoryId} = item;
     return (
-        <div className='grid grid-cols-3 gap-4 mt-28'>
-            <div className='col-span-2 h-[350px] bg-[#E04600] rounded-xl'>
-
+        <div className=''>
+            {
+                advertised? 
+            <div className="card w-96 p-5 glass">
+            <figure><img src={image} className="h-40 w-40" alt="laptop"/></figure>
+            <div className="card-body">
+              <h2 className=" text-center text-xl font-bold">{name}</h2>
+              <p className='text-center'>${price}</p>
+              <div className="card-actions justify-end">
+                <Link to={`/category/${categoryId}`} className="btn btn-primary">Buy Now</Link>
+              </div>
             </div>
-            <div className='h-[350px] bg-slate-700 text-[#FDB028] rounded-xl p-16 relative'>
-                <p className='text-3xl font-bold pr-40'>50% off This Week Only</p>
-                <img src="https://i.ibb.co/TPLhBrb/laptop-guy-707x564-1.png" className='absolute h-[300px] bottom-0 right-2' alt="" />
-            </div>
+          </div>
+            :
+            <></>
+            }
             
+
         </div>
+
+
     );
 };
 
