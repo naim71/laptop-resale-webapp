@@ -10,7 +10,7 @@ const ExtraSection = () => {
             .then(data => setSection(data))
     })
     return (
-        <div className='grid grid-cols-4  rounded-md bg-[#FDCC4A] h-[280px] my-20'>
+        <div className='grid md:grid-cols-4  rounded-md bg-[#FDCC4A] md:h-[280px] my-20'>
             {
                 section ?
                     <>

@@ -17,7 +17,7 @@ const Categories = () => {
             <p className='text-2xl font-bold text-center'>Select Categories</p>
             {
                 categories ?
-                    <div className='grid grid-cols-3 justify-items-center my-20'>
+                    <div className='grid md:grid-cols-3 justify-items-center my-20'>
                         {
                             categories.map(category => <CategoryCard
                                 key={category._id}

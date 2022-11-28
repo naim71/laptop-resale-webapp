@@ -7,7 +7,7 @@ const NewSection = ({ item }) => {
         <div className=''>
             {
                 advertised? 
-            <div className="card w-96 p-5 glass">
+            <div className="card md:w-96 p-5 glass">
             <figure><img src={image} className="h-40 w-40" alt="laptop"/></figure>
             <div className="card-body">
               <h2 className=" text-center text-xl font-bold">{name}</h2>
