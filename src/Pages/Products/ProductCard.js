@@ -1,7 +1,9 @@
 import React from 'react';
 
 const ProductCard = ({product, setBook}) => {
-    const {image, name, price, location, originalPrice, time, seller, usage} = product;
+    const {image, name, price, location, originalPrice, time, seller, usage, verification} = product;
+    console.log(product);
+  
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -16,7 +18,9 @@ const ProductCard = ({product, setBook}) => {
                     <p> <span className='font-bold'>Original Price: </span> ${originalPrice}</p>
                     <p><span className='font-bold'>Years of usage: </span>{usage}</p>
                     <div className="card-actions justify-start">
-                        <div className="badge badge-outline">Seller: {seller}</div>
+                        <div className="badge badge-outline">Seller: {seller} 
+                        <span className='ml-2'>{verification ? ' ✅' : ""}</span>
+                        </div>
                         <div className="badge badge-outline">Posted at {time}</div>
                     </div>
                     <label 

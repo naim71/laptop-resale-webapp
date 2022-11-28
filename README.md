@@ -2,6 +2,7 @@
 # Project Title : Den gadget
 Used laptop resale webapp. 
 ## 🔗 Live Site Link
+live Site: https://den-gadget.web.app/
 
 ## Features
 
@@ -13,5 +14,7 @@ Used laptop resale webapp.
 3. Firebase
 4. DaisyUI
 
-
+## Admin Password/Email
+- nayeem@admin.com
+- 123456
  

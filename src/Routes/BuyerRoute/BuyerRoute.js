@@ -13,7 +13,7 @@ const BuyerRoute = ({ children }) => {
         return <Spinner></Spinner>
     }
 
-    if (user && isBuyer) {
+    if (user?.uid && isBuyer) {
         return children;
     }
 

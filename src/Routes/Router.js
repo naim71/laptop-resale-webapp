@@ -6,6 +6,7 @@ import AddProduct from '../Pages/Dashboard/AddProduct/AddProduct';
 import AllBuyers from '../Pages/Dashboard/AllBuyers/AllBuyers';
 import AllSellers from '../Pages/Dashboard/AllSellers/AllSellers';
 import MyOrders from '../Pages/Dashboard/MyOrders/MyOrders';
+import MyProducts from '../Pages/Dashboard/MyProducts/MyProducts';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Products from '../Pages/Products/Products';
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
             {
                 path: "/category/:categoryId",
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.categoryId}`)
+                loader: ({params}) => fetch(`http://localhost:5000/products/categories/${params.categoryId}`)
             },
 
         ]
@@ -77,7 +78,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/myproducts",
-                element: <SellerRoute></SellerRoute>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
                 
             },
         ]
