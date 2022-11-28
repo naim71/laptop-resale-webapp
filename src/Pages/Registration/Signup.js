@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext/AuthProvider';
 import useToken from '../../hooks/useToken';
 
@@ -10,14 +10,20 @@ const Signup = () => {
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [error, setError] = useState(null);
     const [createdUserEmail, setcreatedUserEmail] = useState('');
+    const location = useLocation();
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
     const optionRef = useRef();
 
-    //console.log(url);
-    if(token){
-        navigate('/')
-    }
+    const from = location.state?.from?.pathname || '/';
+
+
+    useEffect(()=>{
+        if(token){
+            navigate(from, { replace: true });
+        }
+    },[token,from])
+    
 
     const handleSignup = event => {
         event.preventDefault();
@@ -51,7 +57,7 @@ const Signup = () => {
                 setImgurl(imgData.data.url);
                  
                 //save user info to database
-                fetch('http://localhost:5000/users',{
+                fetch('https://used-product-resale-server-self.vercel.app/users',{
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json'

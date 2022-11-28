@@ -5,7 +5,7 @@ const ExtraSection = () => {
     const [section, setSection] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/sections')
+        fetch('https://used-product-resale-server-self.vercel.app/sections')
             .then(res => res.json())
             .then(data => setSection(data))
     })

@@ -12,7 +12,7 @@ const MyProducts = () => {
         setDeletingProducts(null);
     }
 
-    const url = `http://localhost:5000/products/${user.displayName}`;
+    const url = `https://used-product-resale-server-self.vercel.app/products/${user.displayName}`;
 
     const { data: myProducts = [], refetch } = useQuery({
         queryKey: ['myProducts', user?.email],
@@ -24,7 +24,7 @@ const MyProducts = () => {
     })
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/product/${product._id}`, {
+        fetch(`https://used-product-resale-server-self.vercel.app/product/${product._id}`, {
             method: 'DELETE', 
         })
         .then(res => res.json())
@@ -38,7 +38,7 @@ const MyProducts = () => {
 
 
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://used-product-resale-server-self.vercel.app/product/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

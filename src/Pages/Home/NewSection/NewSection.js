@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NewSection = ({ item }) => {
     const { advertised, name, price, image, categoryId} = item;
     return (
-        <div className=''>
+        <div>
             {
                 advertised? 
             <div className="card md:w-96 p-5 glass">

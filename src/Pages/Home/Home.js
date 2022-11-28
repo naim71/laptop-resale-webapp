@@ -10,7 +10,7 @@ const Home = () => {
     const {loading} = useContext(AuthContext); 
     const [advertiseItems, setAdvertiseItems] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://used-product-resale-server-self.vercel.app/products')
             .then(res => res.json())
             .then(data => setAdvertiseItems(data))
     })

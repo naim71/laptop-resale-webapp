@@ -7,6 +7,7 @@ import AllBuyers from '../Pages/Dashboard/AllBuyers/AllBuyers';
 import AllSellers from '../Pages/Dashboard/AllSellers/AllSellers';
 import MyOrders from '../Pages/Dashboard/MyOrders/MyOrders';
 import MyProducts from '../Pages/Dashboard/MyProducts/MyProducts';
+import Payment from '../Pages/Dashboard/Payment/Payment';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Products from '../Pages/Products/Products';
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
             {
                 path: "/category/:categoryId",
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/categories/${params.categoryId}`)
+                loader: ({params}) => fetch(`https://used-product-resale-server-self.vercel.app/products/categories/${params.categoryId}`)
             },
 
         ]
@@ -81,6 +82,11 @@ export const router = createBrowserRouter([
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
                 
             },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`https://used-product-resale-server-self.vercel.app/bookings/${params.id}`)
+            }
         ]
     },
     {
