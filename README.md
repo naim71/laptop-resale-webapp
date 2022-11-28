@@ -5,7 +5,11 @@ Used laptop resale webapp.
 live Site: https://den-gadget.web.app/
 
 ## Features
-
+- Responsive for mobile and desktop
+- Resale Marketplace
+- Categorywise Product Selection
+- Advertisement facility
+- Smooth User Experience
 
 
 ## List of Frameworks/Libraries
@@ -14,7 +18,5 @@ live Site: https://den-gadget.web.app/
 3. Firebase
 4. DaisyUI
 
-## Admin Password/Email
-- nayeem@admin.com
-- 123456
+
  
